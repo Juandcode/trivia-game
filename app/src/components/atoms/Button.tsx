@@ -2,7 +2,7 @@ import React, {ReactElement, RefObject, FC, ReactNode} from 'react';
 
 type props = {
     style: string
-    onClick?: () => void
+    onClick?: () => Promise<void> | void
 }
 type Props2 = { children: ReactNode } & props
 
