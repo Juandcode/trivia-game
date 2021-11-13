@@ -22,4 +22,4 @@ You must show me the time it took me to finish this trivia
 -Prisma ORM
 
 ## Example
-![alt text](https://raw.githubusercontent.com/Juandcode/trivia-game/master/Screenshot%202021-11-13%20120901.png)
+![alt text](https://raw.githubusercontent.com/Juandcode/trivia-game/master/ezgif-4-de0d5b6f91e6.gif)
