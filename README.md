@@ -16,3 +16,7 @@ You must show me the time it took me to finish this trivia
 -Apollo server/client
 
 -Atomic design
+
+-Graphql
+
+-Prisma ORM

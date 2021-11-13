@@ -4,6 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
+    "prismainit": "prisma init",
+    "prismagenerate": "prisma generate",
     "build": "tsc",
     "postinstall": "npm run-script build",
     "test": "echo \"Error: no test specified\" && exit 1"
