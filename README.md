@@ -20,3 +20,6 @@ You must show me the time it took me to finish this trivia
 -Graphql
 
 -Prisma ORM
+
+## Example
+![alt text](https://raw.githubusercontent.com/Juandcode/trivia-game/master/Screenshot%202021-11-13%20120901.png)
