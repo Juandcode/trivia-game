@@ -1,0 +1,37 @@
+type Category{
+    id:ID!
+    name:String!
+}
+type Question{
+    id:ID!
+    texto:String!
+    categoriaId:ID!
+    correctAnswer:ID!
+    points:Int!
+    answer:[Answer]!
+}
+input datos{
+    name:String!
+    categoriaId:ID!
+    totalPoints:Int!
+}
+type Answer{
+    id:ID!
+    text:String!
+    preguntaId:ID!
+
+}
+type User{
+    name:String!
+    categoriaId:ID!
+    totalPoints:Int!
+}
+type Mutation{
+    addUser(name:String!,categoriaId:Int!,points:Int!):User
+}
+type Query{
+    getCategories:[Category]!
+    getQuestions(id:Int!):[Question]!
+    getAnswers(id:Int!):[Answer]!
+    getUsersPointsByCategory(id:Int!):[User]!
+}
