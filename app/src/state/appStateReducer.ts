@@ -5,6 +5,7 @@ export type AppState = {
     points: number
     categories: Category[]
     categoryId: number
+    timestamp: number
 }
 
 export const appStateReducer = (state: AppState, action: Action): AppState => {
@@ -17,6 +18,8 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
             return {...state, categories: action.payload}
         case "SET_CATEGORYID":
             return {...state, categoryId: action.payload}
+        case "SET_TIMESTAMP":
+            return {...state, timestamp: action.payload}
         default:
             return state
     }

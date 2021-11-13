@@ -7,9 +7,10 @@ import {useFocus} from "../../utils/useFocus";
 type Props = {
     name: string
     points: number
+    time: number
 }
 
-export const Modal = ({name, points}: Props) => {
+export const Modal = ({name, points, time}: Props) => {
 
     const ref = useFocus()
 
@@ -41,6 +42,7 @@ export const Modal = ({name, points}: Props) => {
                     <div className="my-5">
                         <Text text={`Name: ${name}`}/>
                         <Text text={`Total points: ${points}`}/>
+                        <Text text={`Time: ${time} seconds`}/>
                     </div>
                     <div className="flex justify-end pt-2">
                         <Button onClick={onClick} style={'p-3 ml-3 bg-green-400'}>

@@ -4,7 +4,7 @@ import {Text} from '../atoms/Text'
 import {useNavigate} from "react-router-dom";
 import {useMutation, useApolloClient, gql} from "@apollo/client";
 import {useAppState} from "../../state/AppStateContext";
-import {setPoints} from "../../state/actions";
+import {setPoints, setTimestamp} from "../../state/actions";
 
 type Props = {
     text: string
@@ -37,7 +37,7 @@ export const ButtonAnswer = ({
                                  setCompleted,
                              }: Props) => {
 
-    const {points, name, categoryId, dispatch} = useAppState()
+    const {points, name, categoryId, dispatch, timestamp} = useAppState()
 
     const [addUser, {loading, error, data}] = useMutation(ADD_USER, {
         onCompleted: (data) => {
@@ -48,6 +48,7 @@ export const ButtonAnswer = ({
     const finishTrivia = async (correct: boolean) => {
         if (questionLength == questionId) {
             const totalP = correct ? points + pointsQ : points
+            dispatch(setTimestamp(Date.now() - timestamp))
             await addUser({
                 variables: {name, categoriaId: categoryId, points: totalP}
             })

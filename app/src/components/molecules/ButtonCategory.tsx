@@ -4,7 +4,7 @@ import {Text} from '../atoms/Text'
 import {useNavigate} from "react-router-dom";
 import {useQuery, useApolloClient, gql} from "@apollo/client";
 import {useAppState} from "../../state/AppStateContext";
-import {setCategoryId, setPoints} from "../../state/actions";
+import {setCategoryId, setPoints, setTimestamp} from "../../state/actions";
 
 type Props = {
     text: string
@@ -32,6 +32,7 @@ export const ButtonCategory = ({text, id}: Props) => {
     const onClick = async () => {
         dispatch(setPoints(0))
         dispatch(setCategoryId(parseInt(String(id))))
+        dispatch(setTimestamp(Date.now()))
         const questions = (await client.query({
             query: GET_QUESTIONS, variables: {
                 getQuestionsId2: parseInt(String(id))
