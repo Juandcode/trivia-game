@@ -1,4 +1,4 @@
-#Description
+# Description
 
 Build an application that when you enter, it must ask you to enter some data
 
@@ -8,7 +8,7 @@ You must ask me to answer some questions, and when the last one is finished, you
 
 to others you must show me the time it took me to finish this trivia
 
-##Technologies used
+## Technologies used
 -Node.js
 
 -React.js
