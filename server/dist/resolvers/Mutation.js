@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -46,51 +35,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var client_1 = require("@prisma/client");
-var apollo_server_express_1 = require("apollo-server-express");
-var schema_1 = require("@graphql-tools/schema");
-var express_1 = __importDefault(require("express"));
-var path_1 = __importDefault(require("path"));
-var fs_1 = __importDefault(require("fs"));
-var resolvers_1 = __importDefault(require("./resolvers"));
-var init = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var app, prisma, schema, server;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                app = (0, express_1.default)();
-                prisma = new client_1.PrismaClient();
-                schema = (0, schema_1.makeExecutableSchema)({
-                    typeDefs: fs_1.default.readFileSync(path_1.default.join(__dirname, "schema.graphql"), 'utf-8'),
-                    resolvers: resolvers_1.default
-                });
-                server = new apollo_server_express_1.ApolloServer({
-                    schema: schema,
-                    context: function (_a) {
-                        var req = _a.req;
-                        return __assign({ prisma: prisma }, req);
-                    }
-                });
-                return [4 /*yield*/, server.start()];
-            case 1:
-                _a.sent();
-                server.applyMiddleware({
-                    app: app,
-                    path: '/'
-                });
-                app.listen(4000, function () { return console.log("server on port 4000 on: " + server.graphqlPath); });
-                return [2 /*return*/];
-        }
-    });
-}); };
-(function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-    switch (_a.label) {
-        case 0: return [4 /*yield*/, init()];
-        case 1: return [2 /*return*/, _a.sent()];
-    }
-}); }); })();
-//# sourceMappingURL=index.js.map
+exports.default = {
+    addUser: function (_, args, _a) {
+        var prisma = _a.prisma;
+        return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, prisma.user.create({
+                            data: {
+                                name: args.name,
+                                totalPoints: args.points,
+                                categoriaId: args.categoriaId,
+                            }
+                        })];
+                    case 1: return [2 /*return*/, _b.sent()];
+                }
+            });
+        });
+    },
+};
+//# sourceMappingURL=Mutation.js.map
